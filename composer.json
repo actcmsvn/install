@@ -1,23 +1,25 @@
 {
-    "name": "laramin/utility",
-    "description": "Utility services for application.",
+    "name": "actcmsvn/install",
+    "description": "ACTCMS Software Installation - Dịch vụ tiện ích cho ứng dụng.",
     "license": "MIT",
     "authors": [
         {
-            "name": "laramin"
+            "name": "ACTCMS Vietnam",
+            "email": "actcms.work@gmail.com",
+            "role": "Developer"
         }
     ],
     "minimum-stability": "stable",
     "require": {},
     "autoload": {
         "psr-4": {
-            "Laramin\\Utility\\": "src/"
+            "ACTCMS\\Install\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Laramin\\Utility\\UtilityServiceProvider"
+                "ACTCMS\\Install\\InstallServiceProvider"
             ]
         }
     }

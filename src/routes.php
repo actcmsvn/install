@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Laramin\Utility\Controller\UtilityController;
-use Laramin\Utility\VugiChugi;
+use ACTCMS\Install\Controller\InstallController;
+use ACTCMS\Install\ActcmsRo;
 
-Route::middleware(VugiChugi::gtc())->controller(UtilityController::class)->group(function(){
-    Route::get(VugiChugi::acRouter(),'laraminStart')->name(VugiChugi::acRouter());
-    Route::post(VugiChugi::acRouterSbm(),'laraminSubmit')->name(VugiChugi::acRouterSbm());
+Route::middleware(ActcmsRo::gtc())->controller(InstallController::class)->group(function(){
+    Route::get(ActcmsRo::acRouter(),'laraStart')->name(ActcmsRo::acRouter());
+    Route::post(ActcmsRo::acRouterSbm(),'laraSubmit')->name(ActcmsRo::acRouterSbm());
 });

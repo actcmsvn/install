@@ -1,28 +1,28 @@
 <?php
 
-namespace Laramin\Utility\Controller;
+namespace ACTCMS\Install\Controller;
 
 use App\Http\Controllers\Controller;
 use App\Lib\CurlRequest;
 use App\Models\GeneralSetting;
 use Illuminate\Http\Request;
-use Laramin\Utility\VugiChugi;
+use ACTCMS\Install\ActcmsRo;
 
-class UtilityController extends Controller{
+class InstallController extends Controller{
 
-    public function laraminStart()
+    public function laraStart()
     {
-        $pageTitle = VugiChugi::lsTitle();
-        return view('Utility::laramin_start',compact('pageTitle'));
+        $pageTitle = ActcmsRo::lsTitle();
+        return view('Install::lara_start',compact('pageTitle'));
     }
 
-    public function laraminSubmit(Request $request){
+    public function laraSubmit(Request $request){
         $param['code'] = $request->purchase_code;
         $param['url'] = env("APP_URL");
         $param['user'] = $request->envato_username;
         $param['email'] = $request->email;
         $param['product'] = systemDetails()['name'];
-        $reqRoute = VugiChugi::lcLabSbm();
+        $reqRoute = ActcmsRo::lcLabSbm();
         $response = CurlRequest::curlPostContent($reqRoute, $param);
         $response = json_decode($response);
 
@@ -46,14 +46,14 @@ $envString .= $k.'='.$en.'
         fwrite($envFile, $envString);
         fclose($envFile);
 
-        $laramin = fopen(dirname(__DIR__).'/laramin.json', "w");
+        $lara = fopen(dirname(__DIR__).'/lara.json', "w");
         $txt = '{
     "purchase_code":'.'"'.$request->purchase_code.'",'.'
     "installcode":'.'"'.@$response->installcode.'",'.'
     "license_type":'.'"'.@$response->license_type.'"'.'
 }';
-        fwrite($laramin, $txt);
-        fclose($laramin);
+        fwrite($lara, $txt);
+        fclose($lara);
 
         $general = GeneralSetting::first();
         $general->maintenance_mode = 0;

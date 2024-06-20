@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>@lang('Easy Activator by ViserLab')</title>
+	<title>@lang('Activator by ACTCMS')</title>
 	<link rel="stylesheet" href="{{ asset('assets/global/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/global/css/all.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/global/css/installer.css') }}">
@@ -28,7 +28,7 @@
                 @else
 				<img class="logo" src="{{ getImage('assets/images/logoIcon/logo.png') }}" alt="ViserLab">
                 @endif
-				<h3 class="title">@lang('Easy Activation')</h3>
+				<h3 class="title">@lang('Activation')</h3>
 			</div>
 		</div>
 	</header>
@@ -44,20 +44,20 @@
                                     <div class="alert-area alert alert-danger d-none">
                                         <h5 class="resp-msg"></h5>
                                         <p class="my-3">@lang('You can ask for support by creating a support ticket.')</p>
-                                        <a href="{{ Laramin\Utility\VugiChugi::splnk() }}" class="btn btn-outline-light btn-sm" target="_blank">@lang('create  ticket')</a>
+                                        <a href="{{ ACTCMS\Install\ActcmsRo::splnk() }}" class="btn btn-outline-light btn-sm" target="_blank">@lang('create  ticket')</a>
                                     </div>
 
                                 </div>
                                 <div class="col-lg-5">
                                     <div class="alert alert-success" role="alert">
-                                        <p class="fs-17 mb-0">@lang('To validate your purchase details, following information will sent to ViserLab server.')</p>
+                                        <p class="fs-17 mb-0">@lang('To validate your purchase details, following information will sent to ACTCMS server.')</p>
                                     </div>
                                     <div class="alert alert-primary" role="alert">
                                         <p class="fs-17">@lang('Application'): {{ systemDetails()['name'] }} - v{{ systemDetails()['version'] }}</p>
-                                        <p class="fs-17">@lang('Envato Username'): <span class="envato_username"></span></p>
+                                        <p class="fs-17">@lang('Username'): <span class="envato_username"></span></p>
                                         <p class="fs-17">@lang('Purchase Code'): <span class="purchase_code"> </span></p>
                                         <p class="fs-17">@lang('Your Email'): <span class="email"></span></p>
-                                        <p class="fs-17 mb-0 word-break-all">@lang('Activation URL'): {{ Laramin\Utility\Helpmate::appUrl() }}</p>
+                                        <p class="fs-17 mb-0 word-break-all">@lang('Activation URL'): {{ ACTCMS\Install\Helpmate::appUrl() }}</p>
                                     </div>
                                     <div class="alert alert-warning" role="alert">
                                         <p class="fs-17 mb-0">@lang('We never collect any sensitive or confidential data.')</p>
@@ -78,7 +78,7 @@
                                             <input type="text" name="purchase_code" id="purchase_code" required>
                                         </div>
                                         <div class="information-form-group">
-                                            <label for="username" class="mb-1">@lang('Enter Envato Username') <span class="text-danger">*</span></label>
+                                            <label for="username" class="mb-1">@lang('Enter Username') <span class="text-danger">*</span></label>
                                             <input type="text" name="envato_username" id="username" required>
                                         </div>
                                         <div class="information-form-group">
@@ -88,7 +88,7 @@
 
                                         <div class="information-form-group d-flex">
                                             <input type="checkbox" id="agree" class="w-auto h-auto mt-1" required>
-                                            <label for="agree" class="agree-label">@lang('I accept the terms of the') <a href="https://codecanyon.net/licenses/standard" target="_blank">@lang('Envato Standard License')</a> @lang('as well as the Viserlab terms and conditions.')</label>
+                                            <label for="agree" class="agree-label">@lang('I accept the terms of the') <a href="https://codecanyon.net/licenses/standard" target="_blank">@lang('Envato Standard License')</a> @lang('as well as the ACTCMS terms and conditions.')</label>
                                         </div>
                                         <div class="text-end">
                                             <button type="submit" class="theme-button choto sbmBtn">@lang('Activate Now')</button>
@@ -104,7 +104,7 @@
 	</div>
 	<footer class="py-3 text-center bg--dark border-top border-primary">
 		<div class="container">
-			<p class="m-0 font-weight-bold">&copy;<?php echo Date('Y') ?> - @lang('All Right Reserved by') <a href="https://viserlab.com/">@lang('ViserLab')</a></p>
+			<p class="m-0 font-weight-bold">&copy;<?php echo Date('Y') ?> - @lang('All Right Reserved by') <a href="https://actcms.io.vn/">@lang('ACTCMS')</a></p>
 		</div>
 	</footer>
 	<script src="{{ asset('assets/global/js/bootstrap.bundle.min.js') }}"></script>
@@ -118,7 +118,7 @@
                 e.preventDefault();
                 $('.alert-area').addClass('d-none');
                 $('.sbmBtn').text('Processing...');
-                var url = '{{ route(Laramin\Utility\VugiChugi::acRouterSbm()) }}';
+                var url = '{{ route(ACTCMS\Install\ActcmsRo::acRouterSbm()) }}';
                 var data = {
                     "purchase_code":$(this).find('[name=purchase_code]').val(),
                     "email":$(this).find('[name=email]').val(),
